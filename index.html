@@ -88,6 +88,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -222,7 +223,7 @@
             height: 350px;
             object-fit: cover;
             transition: transform 0.5s ease;
-            background-color: #eaeaea; /* Fond gris si l'image ne charge pas */
+            background-color: #eaeaea;
         }
 
         .gallery img:hover {
@@ -336,7 +337,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Mobile */
+        /* Responsive Mobile (Corrigé pour le menu) */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -344,6 +345,13 @@
                 background: var(--primary-color);
             }
             .logo { color: var(--text-color); margin-bottom: 15px;}
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
             .nav-links a { color: var(--text-color); }
             .btn-reserver { display: none; }
             
@@ -374,9 +382,9 @@
     <!-- Section Héros / Slider -->
     <section id="accueil" class="hero">
         <div class="slider">
-            <div class="slide active" style="background-image: url('images/accueil-jarre-yemanja.jpg');"></div>
-            <div class="slide" style="background-image: url('images/lounge-exterieur-palmiers.jpg');"></div>
-            <div class="slide" style="background-image: url('images/detail-mobilier-tresse.jpg');"></div>
+            <div class="slide active" style="background-image: url('image.jpg');"></div>
+            <div class="slide" style="background-image: url('image_2.jpg');"></div>
+            <div class="slide" style="background-image: url('image_3.jpg');"></div>
         </div>
         <div class="hero-content">
             <h1>Yemanjā Dakar</h1>
@@ -396,12 +404,12 @@
         </div>
         
         <div class="gallery">
-            <img src="images/chemin-ocean-palmiers.jpg" alt="Chemin vers l'océan">
-            <img src="images/piscine-coucher-soleil.jpg" alt="Piscine à débordement au coucher du soleil">
-            <img src="images/restaurant-vue-globale-soir.jpg" alt="Ambiance lounge en soirée">
-            <img src="images/table-vue-mer-plantes.jpg" alt="Table élégante vue mer">
-            <img src="images/table-dressee-ocean.jpg" alt="Détail des tables et de l'océan">
-            <img src="images/serveur-vue-surfeur.jpg" alt="Service attentionné face aux vagues">
+            <img src="image_4.jpg" alt="Chemin vers l'océan">
+            <img src="image_5.jpg" alt="Piscine à débordement au coucher du soleil">
+            <img src="image_6.jpg" alt="Ambiance lounge en soirée">
+            <img src="image_7.jpg" alt="Table élégante vue mer">
+            <img src="image_8.jpg" alt="Détail des tables et de l'océan">
+            <img src="image_9.jpg" alt="Service attentionné face aux vagues">
         </div>
     </section>
 
