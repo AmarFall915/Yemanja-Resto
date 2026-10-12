@@ -8,18 +8,18 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables & Reset */
+        /* Variables basées sur l'image de référence */
         :root {
-            --primary-color: #FDFBF7;
-            --text-color: #1A1A1A;
-            --text-light: #555555;
-            --accent-color: #C19A5B; /* Or mat raffiné */
-            --card-bg: #FFFFFF;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Montserrat', sans-serif;
+            --bg-color: #FAF6F0; /* Crème clair */
+            --text-main: #2A2A2A;
+            --text-muted: #5A5A5A;
+            --accent-gold: #D2A769; /* Doré doux */
+            --accent-brown: #764E33; /* Marron foncé pour les formes */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
         }
 
         * {
@@ -29,60 +29,52 @@
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--text-color);
-            background: linear-gradient(to bottom, #EBE5D9 0%, #D4C3AC 40%, #8C6A4F 100%);
-            background-attachment: fixed;
-            line-height: 1.6;
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Typographie */
+        /* Forme décorative latérale (comme sur la maquette) */
+        .bg-shape-left {
+            position: absolute;
+            top: 1100px;
+            left: 0;
+            width: 12vw;
+            height: 400px;
+            background-color: var(--accent-brown);
+            border-radius: 0 200px 200px 0;
+            z-index: -1;
+            opacity: 0.9;
+        }
+
         h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            color: var(--text-color);
+            font-family: var(--font-serif);
+            color: var(--text-main);
         }
 
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Navigation */
+        /* --- Navigation --- */
         nav {
-            position: fixed;
+            position: absolute; /* Sur l'image */
+            top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 30px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(253, 251, 247, 0.98);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            padding: 15px 50px;
-        }
-
-        nav.scrolled .logo, nav.scrolled .nav-links a {
-            color: var(--text-color);
+            z-index: 100;
         }
 
         .logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-family: var(--font-serif);
+            font-size: 2rem;
             color: #fff;
             font-weight: 700;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .nav-links {
@@ -94,234 +86,202 @@
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s;
+            opacity: 0.9;
+            transition: opacity 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent-color);
+            opacity: 1;
+            color: var(--accent-gold);
         }
 
-        /* Boutons */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-outline {
-            border: 1px solid rgba(255,255,255,0.5);
-            color: #fff;
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background: #fff;
-            color: var(--text-color);
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: #fff;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #a88349;
-        }
-        
         .nav-btn {
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
+            border: 1px solid rgba(255,255,255,0.6);
+            color: #fff;
             padding: 10px 24px;
             border-radius: 30px;
-        }
-        
-        nav.scrolled .nav-btn {
-            background-color: var(--accent-color);
-            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
         }
 
-        /* Héros & Slider */
+        .nav-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* --- Hero Section --- */
         .hero {
             position: relative;
-            height: 85vh; /* Légèrement réduit pour laisser voir les cartes */
+            height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
+            padding: 0 60px;
         }
 
-        .slider {
+        .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('image.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        /* Dégradé sombre uniquement sur la gauche pour lire le texte */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
             z-index: -1;
         }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
         .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-            margin-top: -50px;
+            max-width: 650px;
+            margin-top: -80px; /* Pour remonter le texte visuellement */
         }
 
         .hero-content h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
+            color: #fff;
+            font-size: 4.5rem;
             line-height: 1.1;
+            margin-bottom: 25px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
             margin-bottom: 40px;
-            font-weight: 300;
-            opacity: 0.9;
+            max-width: 500px;
+            line-height: 1.6;
         }
 
-        /* Feature Cards (Cartes superposées) */
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: #2A2A2A;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- 3 Cartes superposées (Feature Cards) --- */
         .features-wrapper {
             max-width: 1200px;
-            margin: -100px auto 60px auto; /* Marge négative pour chevaucher l'image */
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
+            margin: -120px auto 80px auto;
+            padding: 0 40px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            position: relative;
+            z-index: 10;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 40px 30px;
+            background: #fff;
             border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: left;
-            transition: transform 0.3s ease;
+            padding: 35px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        /* L'effet de dégradé sombre en haut de la carte */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 120px;
+            background: linear-gradient(to bottom, rgba(118, 78, 51, 0.15) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
         }
-        
+
+        .feature-content {
+            position: relative;
+            z-index: 2;
+        }
+
         .feature-icon {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            opacity: 0.8;
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
         }
 
         .feature-link {
-            color: var(--accent-color);
+            color: var(--accent-gold);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        /* Sections Globales */
-        .section {
-            padding: 80px 20px;
+        /* --- Section Galerie / Spécialités --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        .gallery-container {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Galerie Façon Spécialités */
-        .gallery-grid {
+            margin: 0 auto 100px auto;
+            padding: 0 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px 30px;
         }
 
-        .gallery-card {
-            background: transparent;
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
         }
 
-        .gallery-img-wrapper {
+        .gallery-img {
             width: 100%;
-            height: 250px;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-
-        .gallery-img-wrapper img {
-            width: 100%;
-            height: 100%;
+            height: 260px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            border-radius: 16px;
+            margin-bottom: 20px;
         }
 
-        .gallery-card:hover .gallery-img-wrapper img {
-            transform: scale(1.08);
-        }
-
-        .gallery-card h3 {
+        .gallery-item h4 {
             font-size: 1.3rem;
             margin-bottom: 8px;
+            font-family: var(--font-sans);
+            font-weight: 600;
         }
 
-        .gallery-card p {
+        .gallery-item p {
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             line-height: 1.5;
         }
 
-        /* Menu Section */
+        /* --- Menu Section --- */
         .menu-section {
-            background-color: var(--card-bg);
-            border-radius: 24px;
-            padding: 80px 50px;
             max-width: 1000px;
-            margin: 0 auto 80px auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            margin: 0 auto 100px auto;
+            padding: 0 40px;
         }
 
         .tabs {
@@ -333,436 +293,297 @@
         }
 
         .tab-btn {
-            background: #F5F5F5;
-            border: none;
-            padding: 12px 25px;
+            background: #fff;
+            border: 1px solid #E0DCD3;
+            padding: 10px 24px;
             border-radius: 30px;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-light);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .tab-btn.active, .tab-btn:hover {
-            background-color: var(--accent-color);
+            background-color: var(--text-main);
             color: #fff;
+            border-color: var(--text-main);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.6s ease;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.5s ease;
         }
 
-        .menu-item {
+        .menu-item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
-            border-bottom: 1px solid #EEEEEE;
-        }
-        
-        .menu-item:last-child {
-            border-bottom: none;
+            border-bottom: 1px solid #E0DCD3;
         }
 
-        .menu-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            font-family: var(--font-body);
+        .menu-info h5 {
+            font-size: 1.1rem;
+            font-family: var(--font-sans);
             font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .menu-info p {
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         .price {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            font-weight: 700;
-            white-space: nowrap;
-            margin-left: 30px;
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
-        /* Footer */
-        footer {
-            background-color: #1A1A1A;
-            color: #FFFFFF;
-            padding: 80px 50px 30px;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto 50px auto;
-        }
-
-        .footer-content h3 {
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .footer-content p {
-            color: #AAAAAA;
-            margin-bottom: 10px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            font-size: 0.85rem;
-            color: #777777;
-        }
-
-        /* Animations */
+        /* --- Animations & Responsive --- */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 900px) {
-            .features-wrapper {
-                grid-template-columns: 1fr;
-                margin-top: -30px;
+        @media (max-width: 992px) {
+            .features-wrapper, .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
             }
             .hero-content h1 { font-size: 3.5rem; }
-            .menu-section { padding: 40px 20px; }
         }
-        
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 padding: 20px;
-                background: rgba(253, 251, 247, 0.98);
+                background: rgba(0,0,0,0.8);
             }
-            .logo { color: var(--text-color); margin-bottom: 20px;}
-            .nav-links { flex-direction: column; align-items: center; gap: 15px; }
-            .nav-links a { color: var(--text-color); }
+            .nav-links { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
             .nav-btn { display: none; }
-            
-            .menu-item { flex-direction: column; align-items: flex-start; }
-            .price { margin-left: 0; margin-top: 10px; }
+            .hero { padding: 0 30px; }
+            .features-wrapper { grid-template-columns: 1fr; margin-top: -60px; }
+            .gallery-container { grid-template-columns: 1fr; }
+            .bg-shape-left { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Forme décorative en arrière-plan -->
+    <div class="bg-shape-left"></div>
+
     <!-- Navigation -->
-    <nav id="navbar">
-        <div class="logo">YEMANJĀ</div>
+    <nav>
+        <div class="logo">
+            <span>☕</span> YEMANJĀ
+        </div>
         <ul class="nav-links">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#experience">L'Expérience</a></li>
             <li><a href="#menu">La Carte</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="https://wa.me/221776356515" class="btn nav-btn" target="_blank">Réserver</a>
+        <a href="https://wa.me/221776356515" class="nav-btn" target="_blank">Order Online</a>
     </nav>
 
-    <!-- Section Héros / Slider -->
+    <!-- En-tête (Hero) -->
     <section id="accueil" class="hero">
-        <div class="slider">
-            <div class="slide active" style="background-image: url('image.jpg');"></div>
-            <div class="slide" style="background-image: url('image_2.jpg');"></div>
-            <div class="slide" style="background-image: url('image_3.jpg');"></div>
-        </div>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>L'Art de Vivre<br>& Instants Dorés</h1>
-            <p>Une expérience balinaise, une cuisine raffinée et des couchers de soleil inoubliables sur la Corniche des Almadies.</p>
-            <a href="#menu" class="btn btn-primary">Explorer la Carte</a>
+            <h1>Sunset Vibe &<br>Cozy Moments</h1>
+            <p>Un cadre d'exception, une cuisine raffinée et des cocktails signatures pensés pour les amoureux de l'océan.</p>
+            <a href="#menu" class="btn-primary">Explore Menu</a>
         </div>
     </section>
 
-    <!-- Cartes Superposées (Feature Cards) -->
+    <!-- Cartes flottantes -->
     <div class="features-wrapper">
         <div class="feature-card">
-            <div class="feature-icon">🍹</div>
-            <h3>Sunset Bar</h3>
-            <p>Cocktails signatures et mixologie d'exception pour accompagner vos fins de journée face à l'océan.</p>
-            <a href="#menu" class="feature-link">Découvrir les boissons →</a>
+            <div class="feature-content">
+                <div class="feature-icon">🍹</div>
+                <h3>Sunset Bar</h3>
+                <p>Cocktails signatures et mixologie d'exception pour accompagner vos fins de journée.</p>
+                <a href="#menu" class="feature-link">Learn More</a>
+            </div>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🍽️</div>
-            <h3>Cuisine Raffinée</h3>
-            <p>Une carte mêlant inspirations locales, viandes importées et produits de la mer fraîchement pêchés.</p>
-            <a href="#menu" class="feature-link">Voir le menu →</a>
+            <div class="feature-content">
+                <div class="feature-icon">🍽️</div>
+                <h3>Cuisine Raffinée</h3>
+                <p>Une carte mêlant inspirations locales et viandes importées de premier choix.</p>
+                <a href="#menu" class="feature-link">Learn More</a>
+            </div>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🌴</div>
-            <h3>Cadre Balinais</h3>
-            <p>Détendez-vous au bord de notre piscine à débordement dans un espace lounge pensé pour l'évasion.</p>
-            <a href="#experience" class="feature-link">Explorer le lieu →</a>
+            <div class="feature-content">
+                <div class="feature-icon">🌴</div>
+                <h3>Cadre Balinais</h3>
+                <p>Détendez-vous autour de notre piscine à débordement et notre espace lounge.</p>
+                <a href="#experience" class="feature-link">Learn More</a>
+            </div>
         </div>
     </div>
 
-    <!-- Section L'Expérience (Galerie Design) -->
-    <section id="experience" class="section">
-        <h2>L'Esprit Yemanjā</h2>
-        <p class="section-subtitle">Chaque coucher de soleil nous rappelle pourquoi ce lieu nous a inspiré.</p>
+    <!-- Galerie / Spécialités -->
+    <section id="experience">
+        <h2 class="section-title">Our Yemanjā Specialties</h2>
         
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_4.jpg" alt="Chemin vers l'océan">
-                </div>
-                <h3>Évasion Tropicale</h3>
-                <p>Une architecture immersive entourée de palmiers, conçue pour vous transporter hors du temps dès votre arrivée.</p>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="image_4.jpg" alt="Évasion Tropicale" class="gallery-img">
+                <h4>Évasion Tropicale</h4>
+                <p>Une architecture immersive entourée de palmiers, conçue pour vous transporter hors du temps.</p>
             </div>
             
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_5.jpg" alt="Piscine à débordement">
-                </div>
-                <h3>Piscine à Débordement</h3>
-                <p>Profitez d'une vue spectaculaire où l'eau de la piscine semble se fondre avec l'océan Atlantique.</p>
+            <div class="gallery-item">
+                <img src="image_5.jpg" alt="Piscine à Débordement" class="gallery-img">
+                <h4>Piscine à Débordement</h4>
+                <p>Profitez d'une vue spectaculaire où l'eau semble se fondre avec l'océan Atlantique.</p>
             </div>
             
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_6.jpg" alt="Ambiance lounge">
-                </div>
-                <h3>Soirées Lounge</h3>
-                <p>À la tombée de la nuit, l'atmosphère se tamise pour laisser place à une ambiance chic, festive et décontractée.</p>
+            <div class="gallery-item">
+                <img src="image_6.jpg" alt="Soirées Lounge" class="gallery-img">
+                <h4>Soirées Lounge</h4>
+                <p>À la nuit tombée, l'atmosphère chic et festive prend vie au rythme de la musique.</p>
             </div>
             
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_7.jpg" alt="Table élégante">
-                </div>
-                <h3>Design & Mobilier</h3>
+            <div class="gallery-item">
+                <img src="image_7.jpg" alt="Design & Mobilier" class="gallery-img">
+                <h4>Design & Mobilier</h4>
                 <p>Des matériaux nobles, du bois tressé et une décoration soignée pour un confort absolu.</p>
             </div>
             
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_8.jpg" alt="Détail des tables">
-                </div>
-                <h3>Dîner Face à la Mer</h3>
-                <p>Installez-vous aux premières loges pour savourer votre repas bercé par le bruit des vagues.</p>
+            <div class="gallery-item">
+                <img src="image_8.jpg" alt="Dîner Face à la Mer" class="gallery-img">
+                <h4>Dîner Face à la Mer</h4>
+                <p>Installez-vous aux premières loges pour savourer votre repas bercé par l'océan.</p>
             </div>
             
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img src="image_9.jpg" alt="Service attentionné">
-                </div>
-                <h3>Service d'Exception</h3>
+            <div class="gallery-item">
+                <img src="image_9.jpg" alt="Service d'Exception" class="gallery-img">
+                <h4>Service d'Exception</h4>
                 <p>Notre équipe dévouée veille à chaque détail pour faire de votre passage un moment mémorable.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Menu -->
-    <section id="menu" class="section">
-        <h2>Notre Carte</h2>
-        <p class="section-subtitle">Une sélection exquise mêlant inspirations locales et saveurs du monde.</p>
+    <!-- Menu -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Explore Menu</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-target="entrees">Entrées & Partage</button>
+            <button class="tab-btn" data-target="terre">Côté Terre</button>
+            <button class="tab-btn" data-target="mer">Côté Mer</button>
+            <button class="tab-btn" data-target="pizzas">Pizzas & Pâtes</button>
+            <button class="tab-btn" data-target="desserts">Douceurs</button>
+        </div>
 
-        <div class="menu-section">
-            <div class="tabs">
-                <button class="tab-btn active" data-target="entrees">Entrées & Partage</button>
-                <button class="tab-btn" data-target="terre">Côté Terre</button>
-                <button class="tab-btn" data-target="mer">Côté Mer</button>
-                <button class="tab-btn" data-target="pizzas">Pizzas & Pâtes</button>
-                <button class="tab-btn" data-target="desserts">Douceurs</button>
+        <div id="entrees" class="tab-content active">
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Ceviche de poisson</h5>
+                    <p>Lait de coco et fruit de la passion</p>
+                </div>
+                <div class="price">10 000 F</div>
             </div>
-
-            <!-- Contenu Entrées -->
-            <div id="entrees" class="tab-content active">
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Ceviche de poisson</h4>
-                        <p>Lait de coco et fruit de la passion</p>
-                    </div>
-                    <span class="price">10 000 FCFA</span>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Burrata à la crème de framboise</h5>
+                    <p>Grissini et tomates cerises</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Burrata à la crème de framboise</h4>
-                        <p>Grissini et tomates cerises</p>
-                    </div>
-                    <span class="price">10 000 FCFA</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Planche de fromages</h4>
-                        <p>Le coin des copains</p>
-                    </div>
-                    <span class="price">14 000 FCFA</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Houmous</h4>
-                        <p>Escale à Beyrouth</p>
-                    </div>
-                    <span class="price">5 500 FCFA</span>
-                </div>
+                <div class="price">10 000 F</div>
             </div>
-
-            <!-- Contenu Terre -->
-            <div id="terre" class="tab-content">
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Médaillon de bœuf à la crème</h4>
-                        <p>Champignons, poivre vert, bleu d'Auvergne (Signature)</p>
-                    </div>
-                    <span class="price">14 000 FCFA</span>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Planche de fromages</h5>
+                    <p>Le coin des copains</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Entrecôte d'Angus</h4>
-                        <p>Viandes importées, cuisson au choix</p>
-                    </div>
-                    <span class="price">22 000 FCFA</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Poulet grillé entier</h4>
-                        <p>Mariné aux herbes de Provence et tomates cerises à la ciboule</p>
-                    </div>
-                    <span class="price">15 000 FCFA</span>
-                </div>
+                <div class="price">14 000 F</div>
             </div>
+        </div>
 
-            <!-- Contenu Mer -->
-            <div id="mer" class="tab-content">
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Langoustes Prestige à la braise</h4>
-                        <p>Produit d'exception selon arrivage</p>
-                    </div>
-                    <span class="price">25 000 FCFA</span>
+        <div id="terre" class="tab-content">
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Médaillon de bœuf à la crème</h5>
+                    <p>Champignons, poivre vert, bleu d'Auvergne</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Thiof braisé</h4>
-                        <p>Le classique incontournable, préparation locale</p>
-                    </div>
-                    <span class="price">15 000 FCFA</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Gambas au curry</h4>
-                        <p>Et ananas caramélisés</p>
-                    </div>
-                    <span class="price">14 000 FCFA</span>
-                </div>
+                <div class="price">14 000 F</div>
             </div>
-
-            <!-- Contenu Pizzas & Pâtes -->
-            <div id="pizzas" class="tab-content">
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Rigatoni citron, pesto et burrata</h4>
-                        <p>Pâtes fraîches, saveurs d'Italie</p>
-                    </div>
-                    <span class="price">11 000 FCFA</span>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Entrecôte d'Angus</h5>
+                    <p>Viandes importées, cuisson au choix</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Tagliatelles aux fruits de mer</h4>
-                        <p>Pêche du jour, ail et persil</p>
-                    </div>
-                    <span class="price">11 000 FCFA</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Pizza del mare</h4>
-                        <p>Sauce tomate, mozzarella, fruits de mer, basilic</p>
-                    </div>
-                    <span class="price">9 500 FCFA</span>
-                </div>
+                <div class="price">22 000 F</div>
             </div>
+        </div>
 
-            <!-- Contenu Desserts -->
-            <div id="desserts" class="tab-content">
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Pavlova signature</h4>
-                        <p>Meringue croustillante et fruits de saison</p>
-                    </div>
-                    <span class="price">8 500 FCFA</span>
+        <div id="mer" class="tab-content">
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Langoustes Prestige à la braise</h5>
+                    <p>Produit d'exception selon arrivage</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>L'incontournable pain perdu</h4>
-                        <p>Moelleux à cœur, caramélisé à l'extérieur</p>
-                    </div>
-                    <span class="price">7 000 FCFA</span>
+                <div class="price">25 000 F</div>
+            </div>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Gambas au curry</h5>
+                    <p>Et ananas caramélisés</p>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-info">
-                        <h4>Coupe tropique</h4>
-                        <p>Glace mangue, coco, passion, chantilly, coulis de fruits rouges</p>
-                    </div>
-                    <span class="price">7 500 FCFA</span>
+                <div class="price">14 000 F</div>
+            </div>
+        </div>
+        
+        <div id="pizzas" class="tab-content">
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Rigatoni citron, pesto et burrata</h5>
+                    <p>Pâtes fraîches, saveurs d'Italie</p>
                 </div>
+                <div class="price">11 000 F</div>
+            </div>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Pizza del mare</h5>
+                    <p>Sauce tomate, mozzarella, fruits de mer</p>
+                </div>
+                <div class="price">9 500 F</div>
+            </div>
+        </div>
+        
+        <div id="desserts" class="tab-content">
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>Pavlova signature</h5>
+                    <p>Meringue croustillante et fruits de saison</p>
+                </div>
+                <div class="price">8 500 F</div>
+            </div>
+            <div class="menu-item-row">
+                <div class="menu-info">
+                    <h5>L'incontournable pain perdu</h5>
+                    <p>Moelleux à cœur, caramélisé à l'extérieur</p>
+                </div>
+                <div class="price">7 000 F</div>
             </div>
         </div>
     </section>
 
-    <!-- Footer & Infos -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h3>Yemanjā Dakar</h3>
-                <p>Restaurant, Lounge & Sunset Bar.</p>
-                <p>Corniche des Almadies<br>Dakar, Sénégal</p>
-            </div>
-            <div class="footer-col">
-                <h3>Horaires</h3>
-                <p>Mardi au Dimanche : 12h00 - 00h00</p>
-                <p>Lundi : Fermé</p>
-            </div>
-            <div class="footer-col">
-                <h3>Réservation</h3>
-                <p>WhatsApp : +221 77 635 65 15</p>
-                <br>
-                <a href="https://wa.me/221776356515" class="btn btn-primary" target="_blank">Réserver une table</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Yemanjā Dakar. Tous droits réservés.</p>
-        </div>
-    </footer>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Navbar Scroll Effect
-            const navbar = document.getElementById("navbar");
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add("scrolled");
-                } else {
-                    navbar.classList.remove("scrolled");
-                }
-            });
-
-            // Slider Logic
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
-            setInterval(nextSlide, 5000);
-
-            // Tabs Logic
+            // Script simplifié uniquement pour les onglets du menu
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
 
