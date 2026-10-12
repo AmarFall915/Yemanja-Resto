@@ -3,586 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yemanjā Dakar | Restaurant, Lounge & Sunset Bar</title>
+    <title>Yemanjā Dakar | Restaurant & Lounge</title>
     
-    <!-- Google Fonts -->
+    <!-- Polices Google : Playfair (Titres) et Inter (Texte) pour reproduire le modèle -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Palette de couleurs calquée sur le modèle "Crafted Coffee" */
         :root {
-            --bg-color: #FAF6F0;
-            --text-main: #2A2A2A;
-            --text-muted: #5A5A5A;
-            --accent-gold: #D2A769;
+            --bg-cream: #FDF8F2;
+            --text-dark: #2B1E16;
+            --text-gray: #6B6058;
+            --accent-gold: #D4A373;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-sans);
-            color: var(--text-main);
-            background-color: var(--bg-color);
-            line-height: 1.6;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-serif);
-            color: var(--text-main);
-        }
+        h1, h2, h3, h4 { font-family: var(--font-serif); }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 40px;
+        /* ====== HEADER & NAVIGATION ====== */
+        header {
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            padding: 25px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(42, 42, 42, 0.85);
-            backdrop-filter: blur(10px);
+            z-index: 100;
         }
 
         .logo {
+            color: #fff;
             font-family: var(--font-serif);
             font-size: 1.5rem;
-            color: #fff;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
+            gap: 35px;
             list-style: none;
-            gap: 25px;
         }
 
         .nav-links a {
-            color: #fff;
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
+        .nav-links a:hover { color: var(--accent-gold); }
 
-        .nav-btn {
-            border: 1px solid rgba(255,255,255,0.6);
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: #fff;
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 10px 24px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.85rem;
             transition: all 0.3s;
         }
 
-        .nav-btn:hover {
-            background-color: var(--accent-gold);
+        .btn-outline:hover {
             border-color: var(--accent-gold);
-            color: #fff;
+            color: var(--accent-gold);
         }
 
-        /* Hero Section */
+        /* ====== HERO SECTION ====== */
         .hero {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 40px 60px 40px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            height: 75vh;
             background-image: url('image.jpg');
             background-size: cover;
             background-position: center;
-            z-index: -2;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
         }
 
-        .hero-overlay {
+        /* Voile sombre pour la lisibilité du texte */
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-            z-index: -1;
+            background: linear-gradient(to right, rgba(20, 10, 0, 0.8) 0%, rgba(20, 10, 0, 0.4) 50%, rgba(20, 10, 0, 0.1) 100%);
         }
 
         .hero-content {
-            max-width: 650px;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-top: -50px;
         }
 
         .hero-content h1 {
             color: #fff;
-            font-size: 3.5rem;
-            line-height: 1.15;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
         .hero-content p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            font-weight: 300;
         }
 
-        .btn-primary {
+        .btn-gold {
             background-color: var(--accent-gold);
-            color: #1a1a1a;
-            padding: 12px 28px;
-            border-radius: 30px;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-block;
-            transition: transform 0.2s;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.03);
-        }
-
-        /* 3 Cartes superposées (Grid propre) */
-        .features-wrapper {
-            max-width: 1200px;
-            margin: -60px auto 60px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* ====== 3 CARTES SUPERPOSÉES ====== */
+        .cards-wrapper {
+            display: flex;
+            justify-content: center;
             gap: 25px;
+            max-width: 1200px;
+            margin: -90px auto 80px auto;
+            padding: 0 5%;
             position: relative;
             z-index: 10;
         }
 
-        .feature-card {
+        .card {
+            flex: 1;
             background: #fff;
-            border-radius: 16px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            /* Effet fumé en haut de la carte comme sur ton modèle */
+            background: linear-gradient(180deg, rgba(90, 70, 50, 0.08) 0%, rgba(255, 255, 255, 1) 40%);
         }
 
-        .feature-icon {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .card-icon {
+            color: var(--accent-gold);
             margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        .feature-link {
+        .card a {
             color: var(--accent-gold);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
         }
 
-        /* Galerie / Spécialités */
+        /* ====== GALERIE SPÉCIALITÉS ====== */
+        .specialties {
+            max-width: 1200px;
+            margin: 0 auto 100px auto;
+            padding: 0 5%;
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2.3rem;
-            margin: 60px 0 40px 0;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
         }
 
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
+        .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px 25px;
+            gap: 40px 30px;
         }
 
-        .gallery-item {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-            padding-bottom: 20px;
-        }
-
-        .gallery-img {
+        .grid-item img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            margin-bottom: 16px;
         }
 
-        .gallery-item h4 {
-            font-size: 1.2rem;
-            padding: 0 20px;
-            margin-bottom: 8px;
-        }
-
-        .gallery-item p {
-            font-size: 0.85rem;
-            padding: 0 20px;
-            color: var(--text-muted);
-        }
-
-        /* Menu Section */
-        .menu-section {
-            max-width: 900px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .tab-btn {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 10px 20px;
-            border-radius: 30px;
+        .grid-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
             font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--text-main);
-            color: #fff;
-            border-color: var(--text-main);
-        }
-
-        .tab-content {
-            display: none;
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .menu-item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #F0EFEA;
-        }
-
-        .menu-item-row:last-child {
-            border-bottom: none;
-        }
-
-        .menu-info h5 {
-            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 3px;
         }
 
-        .menu-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .price {
-            font-weight: 600;
-            color: var(--accent-gold);
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1A1A1A;
-            color: #FFFFFF;
-            padding: 60px 30px 20px;
-            text-align: center;
-        }
-
-        footer h3 {
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-        }
-
-        footer p {
-            color: #aaa;
+        .grid-item p {
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            color: var(--text-gray);
         }
 
-        .footer-bottom {
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            font-size: 0.8rem;
-            color: #777;
+        /* Formes marrons décoratives en arrière plan */
+        .shape-left {
+            position: absolute;
+            top: 110vh; left: 0;
+            width: 15vw; height: 400px;
+            background-color: #7A5B42;
+            border-radius: 0 200px 200px 0;
+            opacity: 0.8;
+            z-index: -1;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* ====== ADAPTATION STRICTE MOBILE ====== */
+        @media (max-width: 850px) {
+            /* On masque le menu compliqué sur mobile pour éviter qu'il s'écrase */
+            header .nav-links, header .btn-outline {
+                display: none;
+            }
+            
+            header {
+                justify-content: center; /* Centre le logo sur mobile */
+                padding: 20px;
+            }
 
-        /* Responsive Mobile */
-        @media (max-width: 900px) {
-            .features-wrapper, .gallery-container {
+            .hero {
+                height: 65vh; /* Moins haut sur mobile */
+                text-align: center;
+            }
+
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1rem; }
+
+            /* On force les 3 cartes à s'empiler l'une sous l'autre au lieu de s'écraser */
+            .cards-wrapper {
+                flex-direction: column;
+                margin-top: -60px;
+                gap: 20px;
+            }
+
+            /* On met la galerie sur 1 seule colonne au lieu de 3 */
+            .grid {
                 grid-template-columns: 1fr;
             }
-            .hero-content h1 { font-size: 2.8rem; }
-            nav { padding: 15px 20px; }
-            .nav-links, .nav-btn { display: none; /* Simplification mobile propre */ }
+
+            .shape-left { display: none; } /* Masqué sur mobile pour gagner de la place */
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">YEMANJĀ</div>
-        <ul class="nav-links">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#experience">L'Expérience</a></li>
-            <li><a href="#menu">La Carte</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="https://wa.me/221776356515" class="nav-btn" target="_blank">Réserver</a>
-    </nav>
+    <div class="shape-left"></div>
 
-    <!-- Hero Section -->
-    <section id="accueil" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
+    <!-- En-tête -->
+    <header>
+        <div class="logo">
+            <!-- Icône Tasse SVG épurée -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 2v3"/><path d="M10 2v3"/><path d="M14 2v3"/></svg>
+            YEMANJĀ
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Coffee</a></li>
+            <li><a href="#">Bakery</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Our Story</a></li>
+        </ul>
+        <a href="https://wa.me/221776356515" class="btn-outline">Order Online</a>
+    </header>
+
+    <!-- Bannière Hero -->
+    <section class="hero">
         <div class="hero-content">
             <h1>Sunset Vibe &<br>Cozy Moments</h1>
             <p>Un cadre d'exception, une cuisine raffinée et des cocktails signatures pensés pour les amoureux de l'océan.</p>
-            <a href="#menu" class="btn-primary">Explorer la Carte</a>
+            <a href="#" class="btn-gold">Explore Menu</a>
         </div>
     </section>
 
     <!-- 3 Cartes superposées -->
-    <div class="features-wrapper">
-        <div class="feature-card">
-            <div class="feature-icon">🍹</div>
+    <section class="cards-wrapper">
+        <div class="card">
+            <div class="card-icon">
+                <!-- Icône Verre SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 3H2l10 10.5L22 3z"/><path d="M12 13.5V21"/><path d="M8 21h8"/></svg>
+            </div>
             <h3>Sunset Bar</h3>
-            <p>Cocktails signatures et mixologie d'exception pour vos fins de journée.</p>
-            <a href="#menu" class="feature-link">Découvrir →</a>
+            <p>Cocktails signatures et mixologie d'exception, parfaits pour accompagner vos fins de journée.</p>
+            <a href="#">Learn More</a>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🍽️</div>
+
+        <div class="card">
+            <div class="card-icon">
+                <!-- Icône Assiette SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/></svg>
+            </div>
             <h3>Cuisine Raffinée</h3>
-            <p>Inspirations locales et viandes importées de premier choix.</p>
-            <a href="#menu" class="feature-link">Voir le menu →</a>
+            <p>Une carte élégante mêlant les inspirations locales et des produits importés de premier choix.</p>
+            <a href="#">Learn More</a>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🌴</div>
+
+        <div class="card">
+            <div class="card-icon">
+                <!-- Icône Soleil/Palmier SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
+            </div>
             <h3>Cadre Balinais</h3>
-            <p>Détendez-vous autour de notre piscine à débordement et lounge.</p>
-            <a href="#experience" class="feature-link">Explorer →</a>
+            <p>Détendez-vous autour de notre piscine à débordement dans un espace lounge exclusif.</p>
+            <a href="#">Learn More</a>
         </div>
-    </div>
+    </section>
 
     <!-- Galerie / Spécialités -->
-    <section id="experience">
-        <h2 class="section-title">Nos Spécialités & Cadre</h2>
+    <section class="specialties">
+        <h2 class="section-title">Our Café Specialties</h2>
         
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <img src="image_4.jpg" alt="Évasion Tropicale" class="gallery-img">
+        <div class="grid">
+            <div class="grid-item">
+                <img src="image_4.jpg" alt="Évasion Tropicale">
                 <h4>Évasion Tropicale</h4>
-                <p>Une architecture immersive entourée de palmiers.</p>
+                <p>Une architecture immersive entourée de palmiers, conçue pour vous transporter hors du temps.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="image_5.jpg" alt="Piscine à Débordement" class="gallery-img">
+            <div class="grid-item">
+                <img src="image_5.jpg" alt="Piscine à Débordement">
                 <h4>Piscine à Débordement</h4>
-                <p>Une vue spectaculaire face à l'océan Atlantique.</p>
+                <p>Profitez d'une vue spectaculaire où l'eau semble se fondre avec l'océan Atlantique.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="image_6.jpg" alt="Soirées Lounge" class="gallery-img">
+            <div class="grid-item">
+                <img src="image_6.jpg" alt="Soirées Lounge">
                 <h4>Soirées Lounge</h4>
-                <p>Une ambiance chic, festive et décontractée.</p>
+                <p>À la nuit tombée, l'atmosphère chic et festive prend vie au rythme de la musique.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="image_7.jpg" alt="Design & Mobilier" class="gallery-img">
+            <div class="grid-item">
+                <img src="image_7.jpg" alt="Design & Mobilier">
                 <h4>Design & Mobilier</h4>
-                <p>Matériaux nobles et bois tressé pour votre confort.</p>
+                <p>Des matériaux nobles, du bois tressé et une décoration soignée pour un confort absolu.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="image_8.jpg" alt="Dîner Face à la Mer" class="gallery-img">
+            <div class="grid-item">
+                <img src="image_8.jpg" alt="Dîner Face à la Mer">
                 <h4>Dîner Face à la Mer</h4>
-                <p>Installez-vous aux premières loges des vagues.</p>
+                <p>Installez-vous aux premières loges pour savourer votre repas bercé par l'océan.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="image_9.jpg" alt="Service d'Exception" class="gallery-img">
+            <div class="grid-item">
+                <img src="image_9.jpg" alt="Service d'Exception">
                 <h4>Service d'Exception</h4>
-                <p>Une équipe dévouée à votre écoute.</p>
+                <p>Notre équipe dévouée veille à chaque détail pour faire de votre passage un moment inoubliable.</p>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section id="menu" class="menu-section">
-        <h2 class="section-title">Notre Carte</h2>
-        
-        <div class="tabs">
-            <button class="tab-btn active" data-target="entrees">Entrées & Partage</button>
-            <button class="tab-btn" data-target="terre">Côté Terre</button>
-            <button class="tab-btn" data-target="mer">Côté Mer</button>
-            <button class="tab-btn" data-target="pizzas">Pizzas & Pâtes</button>
-            <button class="tab-btn" data-target="desserts">Douceurs</button>
-        </div>
-
-        <div id="entrees" class="tab-content active">
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Ceviche de poisson</h5>
-                    <p>Lait de coco et fruit de la passion</p>
-                </div>
-                <div class="price">10 000 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Burrata à la crème de framboise</h5>
-                    <p>Grissini et tomates cerises</p>
-                </div>
-                <div class="price">10 000 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Planche de fromages</h5>
-                    <p>Le coin des copains</p>
-                </div>
-                <div class="price">14 000 F</div>
-            </div>
-        </div>
-
-        <div id="terre" class="tab-content">
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Médaillon de bœuf à la crème</h5>
-                    <p>Champignons, poivre vert, bleu d'Auvergne</p>
-                </div>
-                <div class="price">14 000 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Entrecôte d'Angus</h5>
-                    <p>Viandes importées, cuisson au choix</p>
-                </div>
-                <div class="price">22 000 F</div>
-            </div>
-        </div>
-
-        <div id="mer" class="tab-content">
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Langoustes Prestige à la braise</h5>
-                    <p>Produit d'exception selon arrivage</p>
-                </div>
-                <div class="price">25 000 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Gambas au curry</h5>
-                    <p>Et ananas caramélisés</p>
-                </div>
-                <div class="price">14 000 F</div>
-            </div>
-        </div>
-        
-        <div id="pizzas" class="tab-content">
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Rigatoni citron, pesto et burrata</h5>
-                    <p>Pâtes fraîches, saveurs d'Italie</p>
-                </div>
-                <div class="price">11 000 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Pizza del mare</h5>
-                    <p>Sauce tomate, mozzarella, fruits de mer</p>
-                </div>
-                <div class="price">9 500 F</div>
-            </div>
-        </div>
-        
-        <div id="desserts" class="tab-content">
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>Pavlova signature</h5>
-                    <p>Meringue croustillante et fruits de saison</p>
-                </div>
-                <div class="price">8 500 F</div>
-            </div>
-            <div class="menu-item-row">
-                <div class="menu-info">
-                    <h5>L'incontournable pain perdu</h5>
-                    <p>Moelleux à cœur, caramélisé à l'extérieur</p>
-                </div>
-                <div class="price">7 000 F</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <h3>Yemanjā Dakar</h3>
-        <p>Corniche des Almadies — Dakar, Sénégal</p>
-        <p>WhatsApp : +221 77 635 65 15</p>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Yemanjā Dakar. Tous droits réservés.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    btn.classList.add('active');
-                    const targetId = btn.getAttribute('data-target');
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-        });
-    </script>
 </body>
 </html>
