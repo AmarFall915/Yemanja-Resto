@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemanjā Dakar | Restaurant, Lounge & Sunset Bar</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">YEMANJĀ</div>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#experience">L'Expérience</a></li>
+            <li><a href="#menu">La Carte</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="https://wa.me/221776356515" class="btn-reserver" target="_blank">Réserver</a>
+    </nav>
+
+    <!-- Section Héros / Slider -->
+    <section id="accueil" class="hero">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('images/accueil-jarre-yemanja.jpg');"></div>
+            <div class="slide" style="background-image: url('images/lounge-exterieur-palmiers.jpg');"></div>
+            <div class="slide" style="background-image: url('images/detail-mobilier-tresse.jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Yemanjā Dakar</h1>
+            <p>Restaurant, Lounge & Sunset Bar sur la Corniche des Almadies</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/221776356515" class="btn-primary">Réserver une table</a>
+                <a href="#menu" class="btn-secondary">Découvrir la carte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section L'Expérience -->
+    <section id="experience" class="section">
+        <div class="section-header">
+            <h2>L'Esprit de la Mer</h2>
+            <p>Un cadre balinais d'exception, rythmé par le murmure de l'océan et les couchers de soleil dorés.</p>
+        </div>
+        
+        <div class="gallery">
+            <img src="images/chemin-ocean-palmiers.jpg" alt="Chemin vers l'océan">
+            <img src="images/piscine-coucher-soleil.jpg" alt="Piscine à débordement au coucher du soleil">
+            <img src="images/restaurant-vue-globale-soir.jpg" alt="Ambiance lounge en soirée">
+            <img src="images/table-vue-mer-plantes.jpg" alt="Table élégante vue mer">
+            <img src="images/table-dressee-ocean.jpg" alt="Détail des tables et de l'océan">
+            <img src="images/serveur-vue-surfeur.jpg" alt="Service attentionné face aux vagues">
+        </div>
+    </section>
+
+    <!-- Section Menu -->
+    <section id="menu" class="section bg-light">
+        <div class="section-header">
+            <h2>Notre Carte</h2>
+            <p>Une sélection exquise mêlant inspirations locales et saveurs du monde.</p>
+        </div>
+
+        <div class="menu-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-target="entrees">Entrées & Partage</button>
+                <button class="tab-btn" data-target="terre">Côté Terre</button>
+                <button class="tab-btn" data-target="mer">Côté Mer</button>
+                <button class="tab-btn" data-target="pizzas">Pizzas & Pâtes</button>
+                <button class="tab-btn" data-target="desserts">Douceurs</button>
+            </div>
+
+            <!-- Contenu Entrées -->
+            <div id="entrees" class="tab-content active">
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Ceviche de poisson</h3>
+                        <p>Lait de coco et fruit de la passion</p>
+                    </div>
+                    <span class="price">10 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Burrata à la crème de framboise</h3>
+                        <p>Grissini et tomates cerises</p>
+                    </div>
+                    <span class="price">10 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Planche de fromages</h3>
+                        <p>Le coin des copains</p>
+                    </div>
+                    <span class="price">14 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Houmous</h3>
+                        <p>Escale à Beyrouth</p>
+                    </div>
+                    <span class="price">5 500 FCFA</span>
+                </div>
+            </div>
+
+            <!-- Contenu Terre -->
+            <div id="terre" class="tab-content">
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Médaillon de bœuf à la crème</h3>
+                        <p>Champignons, poivre vert, bleu d'Auvergne (Signature)</p>
+                    </div>
+                    <span class="price">14 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Entrecôte d'Angus</h3>
+                        <p>Viandes importées, cuisson au choix</p>
+                    </div>
+                    <span class="price">22 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Poulet grillé entier</h3>
+                        <p>Mariné aux herbes de Provence et tomates cerises à la ciboule</p>
+                    </div>
+                    <span class="price">15 000 FCFA</span>
+                </div>
+            </div>
+
+            <!-- Contenu Mer -->
+            <div id="mer" class="tab-content">
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Langoustes Prestige à la braise</h3>
+                        <p>Produit d'exception selon arrivage</p>
+                    </div>
+                    <span class="price">25 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Thiof braisé</h3>
+                        <p>Le classique incontournable, préparation locale</p>
+                    </div>
+                    <span class="price">15 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Gambas au curry</h3>
+                        <p>Et ananas caramélisés</p>
+                    </div>
+                    <span class="price">14 000 FCFA</span>
+                </div>
+            </div>
+
+            <!-- Contenu Pizzas & Pâtes -->
+            <div id="pizzas" class="tab-content">
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Rigatoni citron, pesto et burrata</h3>
+                        <p>Pâtes fraîches, saveurs d'Italie</p>
+                    </div>
+                    <span class="price">11 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Tagliatelles aux fruits de mer</h3>
+                        <p>Pêche du jour, ail et persil</p>
+                    </div>
+                    <span class="price">11 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Pizza del mare</h3>
+                        <p>Sauce tomate, mozzarella, fruits de mer, basilic</p>
+                    </div>
+                    <span class="price">9 500 FCFA</span>
+                </div>
+            </div>
+
+            <!-- Contenu Desserts -->
+            <div id="desserts" class="tab-content">
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Pavlova signature</h3>
+                        <p>Meringue croustillante et fruits de saison</p>
+                    </div>
+                    <span class="price">8 500 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>L'incontournable pain perdu</h3>
+                        <p>Moelleux à cœur, caramélisé à l'extérieur</p>
+                    </div>
+                    <span class="price">7 000 FCFA</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-info">
+                        <h3>Coupe tropique</h3>
+                        <p>Glace mangue, coco, passion, chantilly, coulis de fruits rouges</p>
+                    </div>
+                    <span class="price">7 500 FCFA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Infos -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Yemanjā Dakar</h3>
+                <p>Corniche des Almadies<br>Dakar, Sénégal</p>
+            </div>
+            <div class="footer-hours">
+                <h3>Horaires</h3>
+                <p>Mardi au Dimanche : 12h00 - 00h00<br>Lundi : Fermé</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact & Réservation</h3>
+                <p>WhatsApp : +221 77 635 65 15</p>
+                <a href="https://wa.me/221776356515" class="btn-primary" target="_blank">Réserver sur WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Yemanjā Dakar. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Fichier JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
