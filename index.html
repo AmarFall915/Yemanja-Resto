@@ -8,14 +8,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         /* Variables & Reset */
         :root {
             --primary-color: #FDFBF7;
-            --text-color: #2C3E35;
-            --accent-color: #D4AF37;
+            --text-color: #1A1A1A;
+            --text-light: #555555;
+            --accent-color: #C19A5B; /* Or mat raffiné */
+            --card-bg: #FFFFFF;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
         }
@@ -29,22 +31,28 @@
         body {
             font-family: var(--font-body);
             color: var(--text-color);
-            /* Nouveau fond en dégradé inspiré de ton image */
-            background: linear-gradient(to bottom, #ded7c9 0%, #9e734c 60%, #2b180d 100%);
+            background: linear-gradient(to bottom, #EBE5D9 0%, #D4C3AC 40%, #8C6A4F 100%);
             background-attachment: fixed;
             line-height: 1.6;
         }
 
         /* Typographie */
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: var(--font-heading);
-            font-weight: 600;
+            color: var(--text-color);
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
         }
 
         /* Navigation */
@@ -55,17 +63,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            transition: background 0.4s ease;
+            z-index: 1000;
+            transition: all 0.4s ease;
         }
 
         nav.scrolled {
-            background: rgba(222, 215, 201, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(253, 251, 247, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 50px;
         }
 
-        nav.scrolled .nav-links a, 
-        nav.scrolled .logo {
+        nav.scrolled .logo, nav.scrolled .nav-links a {
             color: var(--text-color);
         }
 
@@ -73,24 +81,22 @@
             font-family: var(--font-heading);
             font-size: 1.8rem;
             color: #fff;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 2px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 500;
             transition: color 0.3s;
-            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -98,43 +104,55 @@
         }
 
         /* Boutons */
-        .btn-primary, .btn-secondary, .btn-reserver {
+        .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 12px 30px;
             text-decoration: none;
-            text-transform: uppercase;
+            font-family: var(--font-body);
             font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            border-radius: 4px;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
             cursor: pointer;
         }
 
-        .btn-primary, .btn-reserver {
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: var(--text-color);
+        }
+
+        .btn-primary {
             background-color: var(--accent-color);
             color: #fff;
+            border: none;
         }
 
-        .btn-primary:hover, .btn-reserver:hover {
-            background-color: #b8972e;
+        .btn-primary:hover {
+            background-color: #a88349;
         }
-
-        .btn-secondary {
-            background-color: transparent;
+        
+        .nav-btn {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 10px 24px;
+            border-radius: 30px;
+        }
+        
+        nav.scrolled .nav-btn {
+            background-color: var(--accent-color);
             color: #fff;
-            border-color: #fff;
-        }
-
-        .btn-secondary:hover {
-            background-color: #fff;
-            color: var(--text-color);
         }
 
         /* Héros & Slider */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 85vh; /* Légèrement réduit pour laisser voir les cartes */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -171,75 +189,139 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 62, 53, 0.4);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
         }
 
         .slide.active {
             opacity: 1;
         }
 
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            margin-top: -50px;
+        }
+
         .hero-content h1 {
-            font-size: 4.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-weight: 300;
+            opacity: 0.9;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
+        /* Feature Cards (Cartes superposées) */
+        .features-wrapper {
+            max-width: 1200px;
+            margin: -100px auto 60px auto; /* Marge négative pour chevaucher l'image */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .feature-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
         /* Sections Globales */
         .section {
-            padding: 100px 50px;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .bg-light {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            max-width: 1100px;
-            margin: 0 auto 50px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Galerie */
-        .gallery {
+        /* Galerie Façon Spécialités */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px 30px;
         }
 
-        .gallery img {
+        .gallery-card {
+            background: transparent;
+        }
+
+        .gallery-img-wrapper {
             width: 100%;
-            height: 350px;
+            height: 250px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-            background-color: #eaeaea;
-            border-radius: 8px;
         }
 
-        .gallery img:hover {
-            transform: scale(1.03);
+        .gallery-card:hover .gallery-img-wrapper img {
+            transform: scale(1.08);
         }
 
-        /* Menu Tabs */
-        .menu-container {
-            max-width: 900px;
-            margin: 0 auto;
+        .gallery-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .gallery-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 80px 50px;
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
         }
 
         .tabs {
@@ -247,26 +329,25 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .tab-btn {
-            background: none;
+            background: #F5F5F5;
             border: none;
-            border-bottom: 2px solid transparent;
-            padding: 10px 15px;
+            padding: 12px 25px;
+            border-radius: 30px;
             font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
             cursor: pointer;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .tab-btn.active, .tab-btn:hover {
-            border-bottom-color: var(--accent-color);
-            color: var(--accent-color);
+            background-color: var(--accent-color);
+            color: #fff;
         }
 
         .tab-content {
@@ -281,94 +362,101 @@
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px dashed rgba(44, 62, 53, 0.2);
+            align-items: center;
             padding: 20px 0;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
         }
 
-        .menu-info h3 {
+        .menu-info h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
+            font-family: var(--font-body);
+            font-weight: 600;
         }
 
         .menu-info p {
             font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
+            color: var(--text-light);
         }
 
         .price {
             font-family: var(--font-heading);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--accent-color);
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
-            margin-left: 20px;
+            margin-left: 30px;
         }
 
         /* Footer */
         footer {
-            background-color: rgba(44, 62, 53, 0.95);
-            color: var(--primary-color);
-            padding: 60px 50px 20px;
-            margin-top: 50px;
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            padding: 80px 50px 30px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 40px;
+            margin: 0 auto 50px auto;
         }
 
         .footer-content h3 {
             color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-content p {
+            color: #AAAAAA;
+            margin-bottom: 10px;
         }
 
         .footer-bottom {
             text-align: center;
-            border-top: 1px solid rgba(253, 251, 247, 0.1);
-            padding-top: 20px;
-            font-size: 0.8rem;
-            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            font-size: 0.85rem;
+            color: #777777;
         }
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsive Mobile */
+        @media (max-width: 900px) {
+            .features-wrapper {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+            }
+            .hero-content h1 { font-size: 3.5rem; }
+            .menu-section { padding: 40px 20px; }
+        }
+        
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                padding: 15px;
-                background: rgba(222, 215, 201, 0.98);
+                padding: 20px;
+                background: rgba(253, 251, 247, 0.98);
             }
-            .logo { color: var(--text-color); margin-bottom: 15px;}
-            
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
+            .logo { color: var(--text-color); margin-bottom: 20px;}
+            .nav-links { flex-direction: column; align-items: center; gap: 15px; }
             .nav-links a { color: var(--text-color); }
-            .btn-reserver { display: none; }
+            .nav-btn { display: none; }
             
-            .hero-content h1 { font-size: 3rem; }
-            .hero-buttons { flex-direction: column; }
-            
-            .menu-item { flex-direction: column; }
+            .menu-item { flex-direction: column; align-items: flex-start; }
             .price { margin-left: 0; margin-top: 10px; }
-            
-            .footer-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -383,7 +471,7 @@
             <li><a href="#menu">La Carte</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="https://wa.me/221776356515" class="btn-reserver" target="_blank">Réserver</a>
+        <a href="https://wa.me/221776356515" class="btn nav-btn" target="_blank">Réserver</a>
     </nav>
 
     <!-- Section Héros / Slider -->
@@ -394,40 +482,96 @@
             <div class="slide" style="background-image: url('image_3.jpg');"></div>
         </div>
         <div class="hero-content">
-            <h1>Yemanjā Dakar</h1>
-            <p>Restaurant, Lounge & Sunset Bar sur la Corniche des Almadies</p>
-            <div class="hero-buttons">
-                <a href="https://wa.me/221776356515" class="btn-primary">Réserver une table</a>
-                <a href="#menu" class="btn-secondary">Découvrir la carte</a>
+            <h1>L'Art de Vivre<br>& Instants Dorés</h1>
+            <p>Une expérience balinaise, une cuisine raffinée et des couchers de soleil inoubliables sur la Corniche des Almadies.</p>
+            <a href="#menu" class="btn btn-primary">Explorer la Carte</a>
+        </div>
+    </section>
+
+    <!-- Cartes Superposées (Feature Cards) -->
+    <div class="features-wrapper">
+        <div class="feature-card">
+            <div class="feature-icon">🍹</div>
+            <h3>Sunset Bar</h3>
+            <p>Cocktails signatures et mixologie d'exception pour accompagner vos fins de journée face à l'océan.</p>
+            <a href="#menu" class="feature-link">Découvrir les boissons →</a>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🍽️</div>
+            <h3>Cuisine Raffinée</h3>
+            <p>Une carte mêlant inspirations locales, viandes importées et produits de la mer fraîchement pêchés.</p>
+            <a href="#menu" class="feature-link">Voir le menu →</a>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌴</div>
+            <h3>Cadre Balinais</h3>
+            <p>Détendez-vous au bord de notre piscine à débordement dans un espace lounge pensé pour l'évasion.</p>
+            <a href="#experience" class="feature-link">Explorer le lieu →</a>
+        </div>
+    </div>
+
+    <!-- Section L'Expérience (Galerie Design) -->
+    <section id="experience" class="section">
+        <h2>L'Esprit Yemanjā</h2>
+        <p class="section-subtitle">Chaque coucher de soleil nous rappelle pourquoi ce lieu nous a inspiré.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_4.jpg" alt="Chemin vers l'océan">
+                </div>
+                <h3>Évasion Tropicale</h3>
+                <p>Une architecture immersive entourée de palmiers, conçue pour vous transporter hors du temps dès votre arrivée.</p>
+            </div>
+            
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_5.jpg" alt="Piscine à débordement">
+                </div>
+                <h3>Piscine à Débordement</h3>
+                <p>Profitez d'une vue spectaculaire où l'eau de la piscine semble se fondre avec l'océan Atlantique.</p>
+            </div>
+            
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_6.jpg" alt="Ambiance lounge">
+                </div>
+                <h3>Soirées Lounge</h3>
+                <p>À la tombée de la nuit, l'atmosphère se tamise pour laisser place à une ambiance chic, festive et décontractée.</p>
+            </div>
+            
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_7.jpg" alt="Table élégante">
+                </div>
+                <h3>Design & Mobilier</h3>
+                <p>Des matériaux nobles, du bois tressé et une décoration soignée pour un confort absolu.</p>
+            </div>
+            
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_8.jpg" alt="Détail des tables">
+                </div>
+                <h3>Dîner Face à la Mer</h3>
+                <p>Installez-vous aux premières loges pour savourer votre repas bercé par le bruit des vagues.</p>
+            </div>
+            
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="image_9.jpg" alt="Service attentionné">
+                </div>
+                <h3>Service d'Exception</h3>
+                <p>Notre équipe dévouée veille à chaque détail pour faire de votre passage un moment mémorable.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section L'Expérience -->
-    <section id="experience" class="section">
-        <div class="section-header" style="color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
-            <h2 style="color: #fff;">L'Esprit de la Mer</h2>
-            <p>Un cadre balinais d'exception, rythmé par le murmure de l'océan et les couchers de soleil dorés.</p>
-        </div>
-        
-        <div class="gallery">
-            <img src="image_4.jpg" alt="Chemin vers l'océan">
-            <img src="image_5.jpg" alt="Piscine à débordement au coucher du soleil">
-            <img src="image_6.jpg" alt="Ambiance lounge en soirée">
-            <img src="image_7.jpg" alt="Table élégante vue mer">
-            <img src="image_8.jpg" alt="Détail des tables et de l'océan">
-            <img src="image_9.jpg" alt="Service attentionné face aux vagues">
-        </div>
-    </section>
-
     <!-- Section Menu -->
-    <section id="menu" class="section bg-light">
-        <div class="section-header">
-            <h2>Notre Carte</h2>
-            <p>Une sélection exquise mêlant inspirations locales et saveurs du monde.</p>
-        </div>
+    <section id="menu" class="section">
+        <h2>Notre Carte</h2>
+        <p class="section-subtitle">Une sélection exquise mêlant inspirations locales et saveurs du monde.</p>
 
-        <div class="menu-container">
+        <div class="menu-section">
             <div class="tabs">
                 <button class="tab-btn active" data-target="entrees">Entrées & Partage</button>
                 <button class="tab-btn" data-target="terre">Côté Terre</button>
@@ -440,28 +584,28 @@
             <div id="entrees" class="tab-content active">
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Ceviche de poisson</h3>
+                        <h4>Ceviche de poisson</h4>
                         <p>Lait de coco et fruit de la passion</p>
                     </div>
                     <span class="price">10 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Burrata à la crème de framboise</h3>
+                        <h4>Burrata à la crème de framboise</h4>
                         <p>Grissini et tomates cerises</p>
                     </div>
                     <span class="price">10 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Planche de fromages</h3>
+                        <h4>Planche de fromages</h4>
                         <p>Le coin des copains</p>
                     </div>
                     <span class="price">14 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Houmous</h3>
+                        <h4>Houmous</h4>
                         <p>Escale à Beyrouth</p>
                     </div>
                     <span class="price">5 500 FCFA</span>
@@ -472,21 +616,21 @@
             <div id="terre" class="tab-content">
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Médaillon de bœuf à la crème</h3>
+                        <h4>Médaillon de bœuf à la crème</h4>
                         <p>Champignons, poivre vert, bleu d'Auvergne (Signature)</p>
                     </div>
                     <span class="price">14 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Entrecôte d'Angus</h3>
+                        <h4>Entrecôte d'Angus</h4>
                         <p>Viandes importées, cuisson au choix</p>
                     </div>
                     <span class="price">22 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Poulet grillé entier</h3>
+                        <h4>Poulet grillé entier</h4>
                         <p>Mariné aux herbes de Provence et tomates cerises à la ciboule</p>
                     </div>
                     <span class="price">15 000 FCFA</span>
@@ -497,21 +641,21 @@
             <div id="mer" class="tab-content">
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Langoustes Prestige à la braise</h3>
+                        <h4>Langoustes Prestige à la braise</h4>
                         <p>Produit d'exception selon arrivage</p>
                     </div>
                     <span class="price">25 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Thiof braisé</h3>
+                        <h4>Thiof braisé</h4>
                         <p>Le classique incontournable, préparation locale</p>
                     </div>
                     <span class="price">15 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Gambas au curry</h3>
+                        <h4>Gambas au curry</h4>
                         <p>Et ananas caramélisés</p>
                     </div>
                     <span class="price">14 000 FCFA</span>
@@ -522,21 +666,21 @@
             <div id="pizzas" class="tab-content">
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Rigatoni citron, pesto et burrata</h3>
+                        <h4>Rigatoni citron, pesto et burrata</h4>
                         <p>Pâtes fraîches, saveurs d'Italie</p>
                     </div>
                     <span class="price">11 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Tagliatelles aux fruits de mer</h3>
+                        <h4>Tagliatelles aux fruits de mer</h4>
                         <p>Pêche du jour, ail et persil</p>
                     </div>
                     <span class="price">11 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Pizza del mare</h3>
+                        <h4>Pizza del mare</h4>
                         <p>Sauce tomate, mozzarella, fruits de mer, basilic</p>
                     </div>
                     <span class="price">9 500 FCFA</span>
@@ -547,21 +691,21 @@
             <div id="desserts" class="tab-content">
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Pavlova signature</h3>
+                        <h4>Pavlova signature</h4>
                         <p>Meringue croustillante et fruits de saison</p>
                     </div>
                     <span class="price">8 500 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>L'incontournable pain perdu</h3>
+                        <h4>L'incontournable pain perdu</h4>
                         <p>Moelleux à cœur, caramélisé à l'extérieur</p>
                     </div>
                     <span class="price">7 000 FCFA</span>
                 </div>
                 <div class="menu-item">
                     <div class="menu-info">
-                        <h3>Coupe tropique</h3>
+                        <h4>Coupe tropique</h4>
                         <p>Glace mangue, coco, passion, chantilly, coulis de fruits rouges</p>
                     </div>
                     <span class="price">7 500 FCFA</span>
@@ -573,18 +717,21 @@
     <!-- Footer & Infos -->
     <footer id="contact">
         <div class="footer-content">
-            <div class="footer-info">
+            <div class="footer-col">
                 <h3>Yemanjā Dakar</h3>
+                <p>Restaurant, Lounge & Sunset Bar.</p>
                 <p>Corniche des Almadies<br>Dakar, Sénégal</p>
             </div>
-            <div class="footer-hours">
+            <div class="footer-col">
                 <h3>Horaires</h3>
-                <p>Mardi au Dimanche : 12h00 - 00h00<br>Lundi : Fermé</p>
+                <p>Mardi au Dimanche : 12h00 - 00h00</p>
+                <p>Lundi : Fermé</p>
             </div>
-            <div class="footer-contact">
-                <h3>Contact & Réservation</h3>
+            <div class="footer-col">
+                <h3>Réservation</h3>
                 <p>WhatsApp : +221 77 635 65 15</p>
-                <a href="https://wa.me/221776356515" class="btn-primary" target="_blank">Réserver sur WhatsApp</a>
+                <br>
+                <a href="https://wa.me/221776356515" class="btn btn-primary" target="_blank">Réserver une table</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -594,7 +741,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Changement d'apparence de la barre de navigation au scroll
+            // Navbar Scroll Effect
             const navbar = document.getElementById("navbar");
             window.addEventListener("scroll", () => {
                 if (window.scrollY > 50) {
@@ -604,7 +751,7 @@
                 }
             });
 
-            // Gestion du Slider (Diaporama)
+            // Slider Logic
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
 
@@ -613,9 +760,9 @@
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
             }
-            setInterval(nextSlide, 4500);
+            setInterval(nextSlide, 5000);
 
-            // Gestion des Onglets du Menu
+            // Tabs Logic
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
 
